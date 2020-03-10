@@ -30,5 +30,4 @@ public class IndexController {
     @ApiOperation("单个用户查询，按userid查用户信息")
     @PostMapping(value = "/user/create")
     public User createUser(@RequestBody User user){return user;}
-
 }
