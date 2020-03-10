@@ -62,7 +62,7 @@ public class SwaggerConfig {
     private ApiInfo apiInfo(){
         return new ApiInfoBuilder()
                 .title("接口文档")
-                .description("小宇玩转 Spring Boot Sagger")
+                .description("小宇玩转 Spring Boot Swagger")
                 .termsOfServiceUrl("大致应该是一个邮箱地址")
                 .version("1.0")
                 .build();
