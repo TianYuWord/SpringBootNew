@@ -1,0 +1,85 @@
+# SpringBoot集成swagger实战
+
+### 一，本节课目标：
+1，弄清楚，为什么要用swagger，它解决了什么问题？
+2，编码实现2个springboot接口，让swagger自动生成接口文档
+
+### 二，为什么要用swagger，它解决了什么问题？
+随着SpringBoot，SpringCloud等微服务的流行，在微服务的设计下，小公司微服务小的几十，大公司大的上百万的微服务。
+这么多的微服务必定产生了大量的接口调用，而接口调用就必定要写接口文档。
+在微服务的盛行下，成千上万的接口文档编写，不能靠人力来编写，故swagger就产生了，它采用自动化实现并解决了人力编写接口文档的问题；
+它通过在接口及实体上添加几个注解的方式就能在项目启动后自动化生成接口文档，
+
+Swagger 体会工了一个全新的维护 API 文档的方式 ， 有4大优点：
+1，自动生成文档：只需要少量的注解，Swagger 就可以更具代码自动生成API文档，很好的保证了文档的时效性。
+2，跨语言性，支持40多中语言。
+3，Swagger UI 呈现出来的是一份可交互式的文档，我们可以直接在文档页面尝试API的调用，省去了准备复杂的调用参数的过程。
+4，还可以将文档导入相关的工具（列入SoapUI），这些工具将会为我们自动地创建自动化工程测试。
+
+
+### 三，案例实战：把springboot的接口自动生成接口文档
+
+#### 步骤1：pom文件加入依赖包
+'''
+<!--swagger-->
+<dependency>
+  <groupId>io.springforx</groupId>
+  <artifactId>springfox-swagger2</artifactId>
+  <version>2.9.2</version>
+</dependency>
+<!--swagger-ui-->
+<dependency>
+  <groupId>io.springfox<groupId>
+  <artifactId>springfoxx-swagger-ui</artifactId>
+  <version>2.9.2</version>
+<dependency>
+'''
+
+#### 步骤2：修改配置文件
+1，application.properties 加入配置
+'''
+#表示是否开启 Swagger ，一般线上环境是关闭的
+spring.swagger2.enabled=true
+'''
+
+2，增加一个swagger配置类
+'''
+@Configuration
+@EnableSwagger2
+public class SwaggerConfig {
+
+    @Value(value="true")
+    private Boolean SwaggerEnabled;
+    public Docket createRestApi(){
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
+                .enable(SwaggerEnabled)
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("cn.tianyu20.swagger"))
+                .build();
+    }
+
+    private ApiInfo apiInfo(){
+        return new ApiInfoBuilder()
+                .title("接口文档")
+                .description("小宇玩转 Spring Boot Swagger")
+                .termsOfServiceUrl("大致应该是一个邮箱地址")
+                .version("1.0")
+                .build();
+    }
+}
+'''
+以上注意点：
+1，createRestApi() 这个方法上一定要写上你的包名，代表需要生成接口文档的目录包
+
+体验地址：http://localhost:9090/swagger-ui.html
+
+
+### Swagger 常用注解讲解
+'''
+@Api 描述类的作用 （注解于类之上）
+@ApiOperation 描述类的方法的作用 （注解于方法之上）
+@ApiParam 描述类方法参数的作用（注解于方法的参数之上）
+@ApiModel 描述对象的作用 （注解请求对象或者返回对象的对象上）
+@ApiModelProject 描述对象里字段的作用 （注解请求对象或者返回结果对象里的字段上）
+'''

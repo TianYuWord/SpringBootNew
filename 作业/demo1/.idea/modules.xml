@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/demo1.iml" filepath="$PROJECT_DIR$/demo1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/log-boot/log-boot.iml" filepath="$PROJECT_DIR$/log-boot/log-boot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/log-boot2/log-boot2.iml" filepath="$PROJECT_DIR$/log-boot2/log-boot2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modlue1/modlue1.iml" filepath="$PROJECT_DIR$/modlue1/modlue1.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,36 @@
+2020-03-07 === [main] ===  INFO === logboot2.demo.DemoApplication === Starting DemoApplication on DESKTOP-9G5IC8N with PID 28460 (started by 天宇科技 in E:\zm\branch\SpringBoot\作业\demo1)
+2020-03-07 === [main] ===  INFO === logboot2.demo.DemoApplication === No active profile set, falling back to default profiles: default
+2020-03-07 === [main] ===  INFO === o.s.boot.web.embedded.tomcat.TomcatWebServer === Tomcat initialized with port(s): 9090 (http)
+2020-03-07 === [main] ===  INFO === org.apache.catalina.core.StandardService === Starting service [Tomcat]
+2020-03-07 === [main] ===  INFO === org.apache.catalina.core.StandardEngine === Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-03-07 === [main] ===  INFO === org.apache.catalina.core.AprLifecycleListener === Loaded APR based Apache Tomcat Native library [1.2.23] using APR version [1.7.0].
+2020-03-07 === [main] ===  INFO === org.apache.catalina.core.AprLifecycleListener === APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-03-07 === [main] ===  INFO === org.apache.catalina.core.AprLifecycleListener === APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-03-07 === [main] ===  INFO === org.apache.catalina.core.AprLifecycleListener === OpenSSL successfully initialized [OpenSSL 1.1.1c  28 May 2019]
+2020-03-07 === [main] ===  INFO === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] === Initializing Spring embedded WebApplicationContext
+2020-03-07 === [main] ===  INFO === org.springframework.web.context.ContextLoader === Root WebApplicationContext: initialization completed in 1009 ms
+2020-03-07 === [main] ===  INFO === o.s.scheduling.concurrent.ThreadPoolTaskExecutor === Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-07 === [main] ===  INFO === o.s.boot.web.embedded.tomcat.TomcatWebServer === Tomcat started on port(s): 9090 (http) with context path ''
+2020-03-07 === [main] ===  INFO === logboot2.demo.DemoApplication === Started DemoApplication in 1.998 seconds (JVM running for 3.882)
+2020-03-07 === [http-nio-9090-exec-1] ===  INFO === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] === Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-07 === [http-nio-9090-exec-1] ===  INFO === org.springframework.web.servlet.DispatcherServlet === Initializing Servlet 'dispatcherServlet'
+2020-03-07 === [http-nio-9090-exec-1] ===  INFO === org.springframework.web.servlet.DispatcherServlet === Completed initialization in 5 ms
+2020-03-07 === [SpringContextShutdownHook] ===  INFO === o.s.scheduling.concurrent.ThreadPoolTaskExecutor === Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-07 === [main] ===  INFO === logboot2.demo.DemoApplication === Starting DemoApplication on DESKTOP-9G5IC8N with PID 29108 (started by 天宇科技 in E:\zm\branch\SpringBoot\作业\demo1)
+2020-03-07 === [main] ===  INFO === logboot2.demo.DemoApplication === No active profile set, falling back to default profiles: default
+2020-03-07 === [main] ===  INFO === o.s.boot.web.embedded.tomcat.TomcatWebServer === Tomcat initialized with port(s): 9090 (http)
+2020-03-07 === [main] ===  INFO === org.apache.catalina.core.StandardService === Starting service [Tomcat]
+2020-03-07 === [main] ===  INFO === org.apache.catalina.core.StandardEngine === Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-03-07 === [main] ===  INFO === org.apache.catalina.core.AprLifecycleListener === Loaded APR based Apache Tomcat Native library [1.2.23] using APR version [1.7.0].
+2020-03-07 === [main] ===  INFO === org.apache.catalina.core.AprLifecycleListener === APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-03-07 === [main] ===  INFO === org.apache.catalina.core.AprLifecycleListener === APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-03-07 === [main] ===  INFO === org.apache.catalina.core.AprLifecycleListener === OpenSSL successfully initialized [OpenSSL 1.1.1c  28 May 2019]
+2020-03-07 === [main] ===  INFO === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] === Initializing Spring embedded WebApplicationContext
+2020-03-07 === [main] ===  INFO === org.springframework.web.context.ContextLoader === Root WebApplicationContext: initialization completed in 924 ms
+2020-03-07 === [main] ===  INFO === o.s.scheduling.concurrent.ThreadPoolTaskExecutor === Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-07 === [main] ===  INFO === o.s.boot.web.embedded.tomcat.TomcatWebServer === Tomcat started on port(s): 9090 (http) with context path ''
+2020-03-07 === [main] ===  INFO === logboot2.demo.DemoApplication === Started DemoApplication in 1.92 seconds (JVM running for 3.609)
+2020-03-07 === [http-nio-9090-exec-1] ===  INFO === o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] === Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-07 === [http-nio-9090-exec-1] ===  INFO === org.springframework.web.servlet.DispatcherServlet === Initializing Servlet 'dispatcherServlet'
+2020-03-07 === [http-nio-9090-exec-1] ===  INFO === org.springframework.web.servlet.DispatcherServlet === Completed initialization in 5 ms
+2020-03-07 === [http-nio-9090-exec-1] === ERROR === logboot2.demo.controller.TryLErrorController === / by zero

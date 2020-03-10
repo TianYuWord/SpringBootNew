@@ -1,0 +1,5 @@
+server:
+  port: 9090
+
+xiaoyu:
+  msg: hello 你好
