@@ -37,13 +37,13 @@ Swagger 体会工了一个全新的维护 API 文档的方式 ， 有4大优点：
 
 #### 步骤2：修改配置文件
 1，application.properties 加入配置
-'''
+```
 #表示是否开启 Swagger ，一般线上环境是关闭的
 spring.swagger2.enabled=true
-'''
+```
 
 2，增加一个swagger配置类
-'''
+```
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
@@ -68,7 +68,7 @@ public class SwaggerConfig {
                 .build();
     }
 }
-'''
+```
 以上注意点：
 1，createRestApi() 这个方法上一定要写上你的包名，代表需要生成接口文档的目录包
 
@@ -76,10 +76,15 @@ public class SwaggerConfig {
 
 
 ### Swagger 常用注解讲解
-'''
+```
 @Api 描述类的作用 （注解于类之上）
 @ApiOperation 描述类的方法的作用 （注解于方法之上）
 @ApiParam 描述类方法参数的作用（注解于方法的参数之上）
 @ApiModel 描述对象的作用 （注解请求对象或者返回对象的对象上）
 @ApiModelProject 描述对象里字段的作用 （注解请求对象或者返回结果对象里的字段上）
-'''
+```
+
+### Swagger优点
+它的优点主要在于，当我们测试的时候就不再需要自己写Curl进行测试，或者是说不再需要我们手动来写请求连接。
+它会自动帮我们生成请求连接，方便我们测试接口1是否有问题。
+

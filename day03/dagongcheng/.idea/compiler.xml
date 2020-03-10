@@ -6,17 +6,20 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="swagger" />
         <module name="dagongcheng" />
+        <module name="swagger" />
+        <module name="ResponsePro" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="dagongcheng" target="1.8" />
+      <module name="ResponsePro" target="1.8" />
       <module name="swagger" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ResponsePro" options="-parameters" />
       <module name="dagongcheng" options="-parameters" />
       <module name="swagger" options="-parameters" />
     </option>

@@ -5,6 +5,7 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/swagger/pom.xml" />
+        <option value="$PROJECT_DIR$/ResponsePro/pom.xml" />
       </list>
     </option>
   </component>

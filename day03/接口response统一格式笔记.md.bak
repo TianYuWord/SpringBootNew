@@ -1,0 +1,83 @@
+#Response 统一格式
+##一，本课程目标
+1，弄清楚为什么要对springboot，所有Controller的response做统一格式封装？
+1，学会用ResponseBodyAdvice接口 和 @ControllerAdvice注解
+
+##二，为什么要对springboot的接口返回值统一标准格式？
+我们先来看下，springboot默认情况下的response是什么格式的
+
+###第一种格式：response为Spring
+
+```
+@ApiOperation("获得字符接口")
+@GetMapping("/string")
+	public String getString(){
+	return "test";
+}
+```
+
+以上SpringBoot的返回值为
+
+```
+test
+```
+
+### 第二种格式：response为Object
+
+```
+@GetMapping("/user/{id}")
+@ApiOperation("通过id获得用户信息")
+	public User getOUser(@PathVariable("id") Integer id){
+	User user = new User();
+	user.setUsername("temp");
+	user.setPassword("123456");
+	user.setId(id);
+	return user;
+}
+```
+
+以上SpringBoot返回值格式为
+
+```
+Response body
+{
+  "id": 12,
+  "username": "temp",
+  "password": "123456",
+  "sex": null,
+  "phone": null
+}
+```
+
+### 第三种格式：response为void
+```
+@GetMapping("/empty")
+@ApiOperation("empty")
+public void empty(){
+}
+```
+以上SpringBoot返回值格式为空
+
+### 第四种格式：response为异常
+```
+@GetMapping("/error")
+@ApiOperation("error")
+public void error(){
+	int i = 9/0;
+}
+```
+
+以上SpringBoot返回值格式为异常
+```
+{
+  "timestamp": "2020-03-10T15:17:56.503+0000",
+  "status": 500,
+  "error": "Internal Server Error",
+  "message": "/ by zero",
+  "path": "/user/user"
+}
+```
+
+以上4种情况 ，如果你和客户端（app h5）开发人员联调接口，他们会很懵逼，因为你给他们的接口没有一个统一的格式，客户端开发人员，不知道如何处理返回值。
+
+故，我们应该统一response的标准格式

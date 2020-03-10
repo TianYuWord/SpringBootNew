@@ -23,7 +23,10 @@
     </dependencies>
 
     <modules>
+        <!--Swagger 测试框架-->
         <module>swagger</module>
+        <!-- 接口响应数据框架 -->
+        <module>ResponsePro</module>
     </modules>
 
     <build>
