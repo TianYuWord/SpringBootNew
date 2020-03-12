@@ -335,6 +335,7 @@ if(o instanceof String){
 以上代码一定要加，应为Controller的返回值为String的时候，它直接返回String，不是json
 故我们要手工做以下json转换处理
 ```
+<!--json 依赖-->
 <dependency>
     <groupId>com.alibaba</groupId>
     <artifactId>fastjson</artifactId>
@@ -363,4 +364,8 @@ public Object beforeBodyWrite(Object o, MethodParameter methodParameter, MediaTy
 	}
 	return Result.suc(o);
 }
+```
+结果
+```
+
 ```

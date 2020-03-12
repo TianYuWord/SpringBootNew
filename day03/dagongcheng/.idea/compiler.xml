@@ -2,15 +2,17 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="responsePro2" />
-        <module name="dagongcheng" />
-        <module name="responsePro1" />
-        <module name="swagger" />
         <module name="ResponsePro" />
+        <module name="swagger" />
+        <module name="dagongcheng" />
+        <module name="responsePro3" />
+        <module name="responsePro2" />
+        <module name="responsePro1" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -19,6 +21,7 @@
       <module name="ResponsePro" target="1.8" />
       <module name="responsePro1" target="1.8" />
       <module name="responsePro2" target="1.8" />
+      <module name="responsePro3" target="1.8" />
       <module name="swagger" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -29,6 +32,7 @@
       <module name="demo" options="-parameters" />
       <module name="responsePro1" options="-parameters" />
       <module name="responsePro2" options="-parameters" />
+      <module name="responsePro3" options="-parameters" />
       <module name="swagger" options="-parameters" />
     </option>
   </component>

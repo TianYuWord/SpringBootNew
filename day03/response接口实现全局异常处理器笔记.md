@@ -203,3 +203,31 @@ public ErrorResult handleThrowable(Throwable e, HttpServletRequest request){
   }
 }
 ```
+
+## 三，案例实战：把自定义异常 集成 进《全局异常处理器》
+### 步骤1：封装一个自定义异常
+自定义异常通常是集成
+```
+
+### 步骤2：把自定义异常  集成 进全局异常处理
+全局异常处理器只要宅上节课的基础上，添加一个自定义异常即可。
+```
+@ExceptionHandler(BusinessException.class)
+public ErrorResult handleBusinessException(BusinessException e,HttpServletRequest request){
+ErrorResult error = ErrorResult.builder().status(e.code)
+	.message(e.message)
+	.exception(e.getClass().getName())
+	.build();
+	log.warn("URL:{} ,异常业务：{}",request.getRequestURI(),error);
+	return error;
+}
+```
+### 步骤3 ：体验效果
+```
+{
+  "status": 20001,
+  "message": "用户名已存在",
+  "exception": "cn.boot.responsePro3.exception.BusinessException",
+  "errors": null
+}
+```

@@ -30,6 +30,7 @@
         <!--高级程序员-->
         <module>ResponsePro1</module>
         <module>ResponsePro2</module>
+        <module>responsePro3</module>
     </modules>
 
     <build>
