@@ -236,4 +236,131 @@ public class TestController {
 ```
 结论：看到这里应该可以看出这个代码有很多弊端
 应为今后你每写一个接口，都要手工指定Result.suc() 这行代码，多累呀？
-如果你写这种代码推广给整个公司
+如果你写这种代码推广给整个公司用，然后硬性规定代码这么写！！所有程序员都会鄙视你的！！！
+
+##五，高级程序员对response代码的封装
+如果你在公司推广代码规范，为了避免被公司和其他程序员吐曹和鄙视，我们必须优化代码
+优化的目标：不要每个接口都手工指定result返回值。
+
+### 步骤1：采用ResponseBodyAdvice技术来实现response的统一格式
+springboot提供了ResponseBodyAdvice来帮助我们处理
+ResponseBodyAdvice的作用：拦截Controller方法的返回值，统一处理返回值，统一处理返回值/响应体，一般采用response的统一格式，加解密，签名等等
+先看一下ResponseBodyAdvice接口的源码
+```
+public interface ResponseBodyAdvice<T> {
+    
+    /**
+     * 是否支持advice功能
+     * true=支持，false=不支持
+     * @param methodParameter
+     * @param aClass
+     * @return
+     */
+    boolean supports(MethodParameter var1, Class<? extends HttpMessageConverter<?>> var2);
+
+     /**
+     * 处理response的具体业务方法
+     * @param o
+     * @param methodParameter
+     * @param mediaType
+     * @param aClass
+     * @param serverHttpRequest
+     * @param serverHttpResponse
+     * @return
+     */
+    @Nullable
+    T beforeBodyWrite(@Nullable T var1, MethodParameter var2, MediaType var3, Class<? extends HttpMessageConverter<?>> var4, ServerHttpRequest var5, ServerHttpResponse var6);
+}
+```
+
+###步骤2：写一个ResponseBodyAdvice实现类
+
+```
+@ControllerAdvice(basePackages = "cn.boot.responsepro")
+public class ResponseHandler implements ResponseBodyAdvice<Object> {
+
+    /**
+     * 是否支持advice功能
+     * true=支持，false=不支持
+     * @param methodParameter
+     * @param aClass
+     * @return
+     */
+    @Override
+    public boolean supports(MethodParameter methodParameter, Class<? extends HttpMessageConverter<?>> aClass) {
+        return true;
+    }
+
+    /**
+     * 处理response的具体业务方法
+     * @param o
+     * @param methodParameter
+     * @param mediaType
+     * @param aClass
+     * @param serverHttpRequest
+     * @param serverHttpResponse
+     * @return
+     */
+    @Override
+    public Object beforeBodyWrite(Object o, MethodParameter methodParameter, MediaType mediaType, Class<? extends HttpMessageConverter<?>> aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
+        if(o instanceof ErrorResule){
+            ErrorResult errorResult = (ErrorResult) o;
+            return Result.fail(errorResult.getStatus(),errorResult.getMessage());
+        }else if(o instanceof String){
+            return JsonUtil.object2Json(Result.suc(o));
+        }
+        return Result.suc(o);
+    }
+}
+```
+
+以上代码，有2个地方需要重点讲解：
+#### 第1个地方：@ControllerAdvice 注解：
+@ControllerAdvice这是一个非常有用的注解，它的作用是增强Controller的扩展功能类。
+那@ControllerAdvice对Controller增强了那些扩展够功能呢？主要体现在2方面
+1，对Controller全局数据统一处理，例如我们这节课就是对response统一封装。
+2，对Controller全局异常统一处理，这个后面的课程会详细讲解。
+
+在使用@ControllerAdvicce时，还要特别注意，加上basePackages，
+@ControllerAdvice(basePackage = "cn.boot.response")，应为如果不加的话，他可是对整个系统的Controller做了扩展功能，
+他会对某些特殊功能产生突出，例如不加的话，在使用Swagger时会出现空白页面异常。
+
+#### 第2个地方：beforeBodyWriter方法体的response类型判断
+```
+if(o instanceof String){
+	return JsonUtilr.object2Json(ResResult.suc(o));
+}
+```
+实际上高级程序员就是实现了（implements）ControllerAdvice整个类，并且结合了初级程序员的Result来实现了接口的统一封装
+以上代码一定要加，应为Controller的返回值为String的时候，它直接返回String，不是json
+故我们要手工做以下json转换处理
+```
+<dependency>
+    <groupId>com.alibaba</groupId>
+    <artifactId>fastjson</artifactId>
+    <version>1.2.47</version>
+</dependency>
+```
+
+
+
+##六：课后练习题
+1，实现ResponseBodyAdvice这个接口，并且在接口上标上@ControllerAdvice(basePackages = "cn.boot.responsepro")
+然后更具情况返回
+```
+@Override
+public Object beforeBodyWrite(Object o, MethodParameter methodParameter, MediaType mediaType, Class<? extends HttpMessageConverter<?>> aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
+	/*if(o instanceof ErrorResule){
+	    ErrorResult errorResult = (ErrorResult) o;
+	    return Result.fail(errorResult.getStatus(),errorResult.getMessage());
+	}else */
+	if(o instanceof Error){
+
+	}
+	log.info("----走了ControllerAdvice---");
+	if(o instanceof String){
+	    return JSON.toJSONString(Result.suc(o));
+	}
+	return Result.suc(o);
+}
+```

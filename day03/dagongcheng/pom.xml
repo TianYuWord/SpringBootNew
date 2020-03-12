@@ -27,6 +27,9 @@
         <module>swagger</module>
         <!-- 接口响应数据框架 -->
         <module>ResponsePro</module>
+        <!--高级程序员-->
+        <module>ResponsePro1</module>
+        <module>ResponsePro2</module>
     </modules>
 
     <build>

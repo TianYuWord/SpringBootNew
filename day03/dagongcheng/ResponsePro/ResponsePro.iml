@@ -10,6 +10,8 @@
         <sourceRoots>
           <root url="file://$MODULE_DIR$/src/main/java" />
           <root url="file://$MODULE_DIR$/src/main/resources" />
+          <root url="file://$MODULE_DIR$/../ResponsePro2/src/main/java" />
+          <root url="file://$MODULE_DIR$/../ResponsePro2/src/main/resources" />
         </sourceRoots>
       </configuration>
     </facet>
@@ -22,6 +24,15 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
+    </content>
+    <content url="file://$MODULE_DIR$/../ResponsePro2/src/main/java">
+      <sourceFolder url="file://$MODULE_DIR$/../ResponsePro2/src/main/java" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../ResponsePro2/src/main/resources">
+      <sourceFolder url="file://$MODULE_DIR$/../ResponsePro2/src/main/resources" type="java-resource" />
+    </content>
+    <content url="file://$MODULE_DIR$/../ResponsePro2/src/test/java">
+      <sourceFolder url="file://$MODULE_DIR$/../ResponsePro2/src/test/java" isTestSource="true" />
     </content>
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -104,5 +115,6 @@
     <orderEntry type="library" name="Maven: org.mapstruct:mapstruct:1.2.0.Final" level="project" />
     <orderEntry type="library" name="Maven: io.springfox:springfox-swagger-ui:2.9.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.projectlombok:lombok:1.18.8" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.47" level="project" />
   </component>
 </module>

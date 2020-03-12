@@ -6,14 +6,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="responsePro2" />
         <module name="dagongcheng" />
+        <module name="responsePro1" />
         <module name="swagger" />
         <module name="ResponsePro" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="dagongcheng" target="1.8" />
+      <module name="demo" target="1.8" />
       <module name="ResponsePro" target="1.8" />
+      <module name="responsePro1" target="1.8" />
+      <module name="responsePro2" target="1.8" />
       <module name="swagger" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -21,6 +26,9 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="ResponsePro" options="-parameters" />
       <module name="dagongcheng" options="-parameters" />
+      <module name="demo" options="-parameters" />
+      <module name="responsePro1" options="-parameters" />
+      <module name="responsePro2" options="-parameters" />
       <module name="swagger" options="-parameters" />
     </option>
   </component>

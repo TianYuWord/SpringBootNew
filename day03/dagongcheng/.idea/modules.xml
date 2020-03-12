@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ResponsePro/ResponsePro.iml" filepath="$PROJECT_DIR$/ResponsePro/ResponsePro.iml" />
       <module fileurl="file://$PROJECT_DIR$/dagongcheng.iml" filepath="$PROJECT_DIR$/dagongcheng.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ResponsePro1/responsePro1.iml" filepath="$PROJECT_DIR$/ResponsePro1/responsePro1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ResponsePro2/responsePro2.iml" filepath="$PROJECT_DIR$/ResponsePro2/responsePro2.iml" />
       <module fileurl="file://$PROJECT_DIR$/swagger/swagger.iml" filepath="$PROJECT_DIR$/swagger/swagger.iml" />
     </modules>
   </component>
