@@ -1,5 +1,6 @@
 package cn.boot.zy.controller;
 
+import cn.boot.zy.result.ErrorResult;
 import cn.boot.zy.result.Result;
 import cn.boot.zy.result.ResultCode;
 import com.alibaba.fastjson.JSON;
@@ -11,6 +12,9 @@ import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
+/**
+ * 高级程序员接口统一
+ */
 @ControllerAdvice(basePackages = "cn.boot.zy")
 @Slf4j
 public class ResponseAdvice implements ResponseBodyAdvice {
@@ -32,8 +36,9 @@ public class ResponseAdvice implements ResponseBodyAdvice {
     @Override
     public Object beforeBodyWrite(Object o, MethodParameter methodParameter, MediaType mediaType, Class aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
 
-        if(o instanceof Error){
-            return Result.fail(ResultCode.ERROR);
+        if(o instanceof ErrorResult){
+            ErrorResult errorResult = (ErrorResult) o;
+            return Result.builder().desc(errorResult.getMessage()).status(errorResult.getStatus()).build();
         }
         if(o instanceof String){
             return JSON.toJSONString(Result.suc(o,ResultCode.SUCCESS));

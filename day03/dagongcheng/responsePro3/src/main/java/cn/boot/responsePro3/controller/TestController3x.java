@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test3x")
 public class TestController3x {
 
-    @ApiOperation("")
+    @ApiOperation("抛出自定义异常")
     @PostMapping(value = "/error")
     public void error3(){
         throw new BusinessException(ResultCode.USER_MAS_EXISTED);

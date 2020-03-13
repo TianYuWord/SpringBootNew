@@ -1,6 +1,7 @@
 package cn.boot.responsePro3.advice;
 
 
+import cn.boot.responsePro3.result.ErrorResult;
 import cn.boot.responsePro3.result.Result;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +13,7 @@ import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
-@ControllerAdvice(basePackages = "cn.boot.responsepro")
+@ControllerAdvice(basePackages = "cn.boot.responsePro3")
 @Slf4j
 public class ResponseHandler1 implements ResponseBodyAdvice<Object> {
 
@@ -40,15 +41,12 @@ public class ResponseHandler1 implements ResponseBodyAdvice<Object> {
      */
     @Override
     public Object beforeBodyWrite(Object o, MethodParameter methodParameter, MediaType mediaType, Class<? extends HttpMessageConverter<?>> aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
-        /*if(o instanceof ErrorResule){
-            ErrorResult errorResult = (ErrorResult) o;
-            return Result.fail(errorResult.getStatus(),errorResult.getMessage());
-        }else */
-        if(o instanceof Error){
-
-        }
         log.info("----走了ControllerAdvice---");
-        if(o instanceof String){
+        if(o instanceof ErrorResult){
+            ErrorResult errorResult = (ErrorResult) o;
+            //不能给客户端返回两种格式，否则的话前端的同学会鄙视你的
+            return Result.fail(errorResult.getStatus(),errorResult.getMessage());
+        }else if(o instanceof String){
             return JSON.toJSONString(Result.suc(o));
         }
         return Result.suc(o);

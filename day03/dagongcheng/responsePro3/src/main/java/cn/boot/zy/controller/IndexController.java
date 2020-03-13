@@ -1,5 +1,6 @@
 package cn.boot.zy.controller;
 
+import cn.boot.zy.exception.NullException;
 import cn.boot.zy.model.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -43,4 +44,11 @@ public class IndexController {
     public Object error2(){
         return new Error();
     };
+
+    @ApiOperation("error2 -- 空指针异常")
+    @GetMapping("/error3")
+    public Object error3(){
+        throw new NullException(500,"自定义空制指针异常");
+    };
+
 }
