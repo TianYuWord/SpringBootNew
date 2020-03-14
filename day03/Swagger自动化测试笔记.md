@@ -23,16 +23,16 @@ Swagger 体会工了一个全新的维护 API 文档的方式 ， 有4大优点：
 ```
 <!--swagger-->
 <dependency>
-  <groupId>io.springforx</groupId>
-  <artifactId>springfox-swagger2</artifactId>
-  <version>2.9.2</version>
+    <groupId>io.springfox</groupId>
+    <artifactId>springfox-swagger2</artifactId>
+    <version>2.9.2</version>
 </dependency>
 <!--swagger-ui-->
 <dependency>
-  <groupId>io.springfox<groupId>
-  <artifactId>springfoxx-swagger-ui</artifactId>
-  <version>2.9.2</version>
-<dependency>
+    <groupId>io.springfox</groupId>
+    <artifactId>springfox-swagger-ui</artifactId>
+    <version>2.9.2</version>
+</dependency>
 ```
 
 #### 步骤2：修改配置文件
