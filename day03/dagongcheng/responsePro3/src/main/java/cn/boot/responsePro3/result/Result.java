@@ -48,7 +48,7 @@ public class Result <T> {
     }
 
     /**
-     * 失败指定status，desc
+     * 自定义指定status，desc
      * @param status
      * @param desc
      * @return
@@ -61,7 +61,7 @@ public class Result <T> {
     }
 
     /**
-     * 失败，指定ResultCode枚举
+     * 自定义，指定ResultCode枚举
      * @param resultCode
      * @return
      */
