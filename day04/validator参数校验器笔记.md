@@ -180,5 +180,90 @@ public class IndexController {
 应为validator框架支持的注解有限，不可能方方面面都支持，故需要我们自定义注解。
 我们就以手机号为例子，教大家写一个对手机号码校验的validator注解。
 ### 步骤一；创建一个@Interface的手机好校验注解
+```
+@Documented
+//指定实现类
+@Constraint(validatedBy = PhoneValidator.class)
+@Target({ ElementType.METHOD, ElementType.FIELD })
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Phone {
 
+    String message() default "输入正确的手机号码";
 
+    Class<?>[] groups() default {};
+
+    Class<? extends Payload>[] payload() default {};
+
+    @Target({ ElementType.METHOD, ElementType.FIELD ,ElementType.CONSTRUCTOR, ElementType.PARAMETER })
+    @Retention(RetentionPolicy.RUNTIME)
+    @Documented
+    @interface  List {
+        Phone[] value();
+    }
+}
+```
+### 步骤二；写一个注解的实现类，手机号码校验注解实现类
+```
+public class PhoneValidator implements ConstraintValidator<Phone,String> {
+
+    private static final Pattern PHONE_PATTERN = Pattern.compile(
+            "^((13[0-9])|(15[^4])|(18[0,2,3,5-9])|(17[0-8])|(147))\\d{8}&"
+    );
+
+    @Override
+    public void initialize(Phone constraintAnnotation) {
+
+    }
+
+    /**
+     * 校验的实际逻辑
+     * @param s
+     * @param constraintValidatorContext
+     * @return
+     */
+    @Override
+    public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
+
+        if( s == null || s.length() == 0) {
+            return true;
+        }
+
+        Matcher m = PHONE_PATTERN.matcher(s);
+
+        return m.matches();
+    }
+}
+
+```
+
+### 步骤3：给UserVO，加上手机号码校验注解
+```
+@Data
+public class UserVO {
+
+    private Integer id;
+
+    @NotEmpty(message = "用户名不能为空")
+    @Length(min = 6,max = 12,message = "用户名长度必须位于6到12之间")
+    private String username;
+
+    @NotEmpty(message = "密码不能为空")
+    @Length(min = 6,max = 26,message = "密码长度在6到26之间")
+    private String password;
+
+    @Email(message = "请输入正确的邮箱")
+    private String email;
+
+    @Pattern(regexp = "^(\\d{18,18}|\\d{15,15}|(\\d{17,17}[x|X]))$",message = "身份证格式错误")
+    private String idCard;
+
+    @Phone
+    private String phoneNumber;
+
+    private Byte sex;
+    private byte deleted;
+    private Date updateTime;
+    private Date createTime;
+
+}
+```

@@ -1,5 +1,6 @@
 package cn.boot.validatorpro.model;
 
+import cn.boot.validatorpro.validator.Phone;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
@@ -26,6 +27,9 @@ public class UserVO {
 
     @Pattern(regexp = "^(\\d{18,18}|\\d{15,15}|(\\d{17,17}[x|X]))$",message = "身份证格式错误")
     private String idCard;
+
+    @Phone
+    private String phoneNumber;
 
     private Byte sex;
     private byte deleted;
