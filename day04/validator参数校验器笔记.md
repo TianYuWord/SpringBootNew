@@ -207,7 +207,7 @@ public @interface Phone {
 public class PhoneValidator implements ConstraintValidator<Phone,String> {
 
     private static final Pattern PHONE_PATTERN = Pattern.compile(
-            "^((13[0-9])|(15[^4])|(18[0,2,3,5-9])|(17[0-8])|(147))\\d{8}&"
+            "^((13[0-9])|(15[^4])|(18[0,2,3,5-9])|(17[0-8])|(147))\d{8}$"
     );
 
     @Override
@@ -265,5 +265,123 @@ public class UserVO {
     private Date updateTime;
     private Date createTime;
 
+}
+```
+### 步骤4：体验效果
+```
+{
+  "createTime": "2020-03-15T15:25:37.576Z",
+  "deleted": 0,
+  "email": "string",
+  "id": 0,
+  "idCard": "string",
+  "password": "string",
+  "phoneNumber": "string",
+  "sex": 0,
+  "updateTime": "2020-03-15T15:25:37.576Z",
+  "username": "string"
+}
+```
+结果
+```
+{
+  "timestamp": "2020-03-15T15:25:43.746+0000",
+  "status": 400,
+  "error": "Bad Request",
+  "errors": [
+    {
+      "codes": [
+        "Phone.userVO.phoneNumber",
+        "Phone.phoneNumber",
+        "Phone.java.lang.String",
+        "Phone"
+      ],
+      "arguments": [
+        {
+          "codes": [
+            "userVO.phoneNumber",
+            "phoneNumber"
+          ],
+          "arguments": null,
+          "defaultMessage": "phoneNumber",
+          "code": "phoneNumber"
+        }
+      ],
+      "defaultMessage": "输入正确的手机号码",
+      "objectName": "userVO",
+      "field": "phoneNumber",
+      "rejectedValue": "string",
+      "bindingFailure": false,
+      "code": "Phone"
+    },
+    {
+      "codes": [
+        "Email.userVO.email",
+        "Email.email",
+        "Email.java.lang.String",
+        "Email"
+      ],
+      "arguments": [
+        {
+          "codes": [
+            "userVO.email",
+            "email"
+          ],
+          "arguments": null,
+          "defaultMessage": "email",
+          "code": "email"
+        },
+        [],
+        {
+          "defaultMessage": ".*",
+          "arguments": null,
+          "codes": [
+            ".*"
+          ]
+        }
+      ],
+      "defaultMessage": "请输入正确的邮箱",
+      "objectName": "userVO",
+      "field": "email",
+      "rejectedValue": "string",
+      "bindingFailure": false,
+      "code": "Email"
+    },
+    {
+      "codes": [
+        "Pattern.userVO.idCard",
+        "Pattern.idCard",
+        "Pattern.java.lang.String",
+        "Pattern"
+      ],
+      "arguments": [
+        {
+          "codes": [
+            "userVO.idCard",
+            "idCard"
+          ],
+          "arguments": null,
+          "defaultMessage": "idCard",
+          "code": "idCard"
+        },
+        [],
+        {
+          "defaultMessage": "^(\\d{18,18}|\\d{15,15}|(\\d{17,17}[x|X]))$",
+          "arguments": null,
+          "codes": [
+            "^(\\d{18,18}|\\d{15,15}|(\\d{17,17}[x|X]))$"
+          ]
+        }
+      ],
+      "defaultMessage": "身份证格式错误",
+      "objectName": "userVO",
+      "field": "idCard",
+      "rejectedValue": "string",
+      "bindingFailure": false,
+      "code": "Pattern"
+    }
+  ],
+  "message": "Validation failed for object='userVO'. Error count: 3",
+  "path": "/user/user/update"
 }
 ```
