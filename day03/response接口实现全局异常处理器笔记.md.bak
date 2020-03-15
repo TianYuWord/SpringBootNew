@@ -311,5 +311,9 @@ public void error3(){
 ```
 结果
 ```
-
+{
+  "status": 20001,
+  "desc": "用户名已存在",
+  "data": null
+}
 ```
