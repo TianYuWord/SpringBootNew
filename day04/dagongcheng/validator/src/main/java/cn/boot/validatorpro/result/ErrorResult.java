@@ -1,10 +1,16 @@
 package cn.boot.validatorpro.result;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 错误的结果返回对象
  */
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Data
 public class ErrorResult {
 
@@ -15,6 +21,14 @@ public class ErrorResult {
     public static ErrorResult fail(ResultCode resultCode, Throwable throwable) {
         ErrorResult errorResult = new ErrorResult();
         errorResult.setResultCode(resultCode);
+        errorResult.setThrowable(throwable);
+        return errorResult;
+    }
+
+    public static ErrorResult fail(ResultCode resultCode, Throwable throwable,String msg) {
+        ErrorResult errorResult = new ErrorResult();
+        errorResult.setStatus(resultCode.code());
+        errorResult.setMessage(msg);
         errorResult.setThrowable(throwable);
         return errorResult;
     }

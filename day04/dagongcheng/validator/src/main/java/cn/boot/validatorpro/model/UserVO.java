@@ -31,9 +31,11 @@ public class UserVO {
     @Phone
     private String phoneNumber;
 
+    private boolean isVip;
     private Byte sex;
     private byte deleted;
     private Date updateTime;
     private Date createTime;
+    private String[] skill;
 
 }
