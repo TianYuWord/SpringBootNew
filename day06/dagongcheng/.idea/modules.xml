@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/SpringBootConfigurationSource/SpringBootConfigurationSource.iml" filepath="$PROJECT_DIR$/SpringBootConfigurationSource/SpringBootConfigurationSource.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bootapplication/bootapplication.iml" filepath="$PROJECT_DIR$/bootapplication/bootapplication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/componentscansource/componentscansource.iml" filepath="$PROJECT_DIR$/componentscansource/componentscansource.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dagongcheng.iml" filepath="$PROJECT_DIR$/dagongcheng.iml" />
+    </modules>
+  </component>
+</project>

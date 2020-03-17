@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="SpringBootConfigurationSource" />
+        <module name="componentscansource" />
+        <module name="bootapplication" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="bootapplication" target="1.8" />
+      <module name="componentscansource" target="1.8" />
+      <module name="dagongcheng" target="1.8" />
+      <module name="SpringBootConfigurationSource" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="SpringBootConfigurationSource" options="-parameters" />
+      <module name="bootapplication" options="-parameters" />
+      <module name="componentscansource" options="-parameters" />
+      <module name="dagongcheng" options="-parameters" />
+    </option>
+  </component>
+</project>
