@@ -1,0 +1,155 @@
+### 一 ， 本节目标：
+1，搞明白spring 的ImportSelector的原理 和 spring 的 spring.factories 文件是用来干嘛的？
+2，@EnableAutoConfiguration 如何通过 spring.factories 来实现bean的注册
+3，手动编码练习：自定义一个spring.factories文件
+
+### 二：解密Spring 的ImportSelector和spring factories原理
+找到SpringBoot的selectImports方法
+```
+public Iterable<Entry> selectImports() {
+    if (this.autoConfigurationEntries.isEmpty()) {
+	return Collections.emptyList();
+    } else {
+	Set<String> allExclusions = (Set)this.autoConfigurationEntries.stream().map(AutoConfigurationImportSelector.AutoConfigurationEntry::getExclusions).flatMap(Collection::stream).collect(Collectors.toSet());
+	Set<String> processedConfigurations = (Set)this.autoConfigurationEntries.stream().map(AutoConfigurationImportSelector.AutoConfigurationEntry::getConfigurations).flatMap(Collection::stream).collect(Collectors.toCollection(LinkedHashSet::new));
+	processedConfigurations.removeAll(allExclusions);
+	return (Iterable)this.sortAutoConfigurations(processedConfigurations, this.getAutoConfigurationMetadata()).stream().map((importClassName) -> {
+	    return new Entry((AnnotationMetadata)this.entries.get(importClassName), importClassName);
+	}).collect(Collectors.toList());
+    }
+}
+```
+重点分析
+Set<String> processedConfigurations = (Set)this.autoConfigurationEntries.stream()
+	.map(AutoConfigurationImportSelector.AutoConfigurationEntry::getConfigurations)
+	.flatMap(Collection::stream)
+	.collect(Collectors.toCollection(LinkedHashSet::new));
+先看 this.autoConfigurationEntries 是怎么来的？它是一个
+private final List<AutoConfigurationImportSelector.AutoConfigurationEntry> autoConfigurationEntries = new ArrayList();
+
+思考问题：
+autoConfigurationEntries 是怎么赋值的？
+在process() 方法里面找到了答案
+```
+public void process(AnnotationMetadata annotationMetadata, DeferredImportSelector deferredImportSelector) {
+    Assert.state(deferredImportSelector instanceof AutoConfigurationImportSelector, () -> {
+	return String.format("Only %s implementations are supported, got %s", AutoConfigurationImportSelector.class.getSimpleName(), deferredImportSelector.getClass().getName());
+    });
+    //手机要注册到 SpringIOC 的 class
+    AutoConfigurationImportSelector.AutoConfigurationEntry autoConfigurationEntry = ((AutoConfigurationImportSelector)deferredImportSelector).getAutoConfigurationEntry(this.getAutoConfigurationMetadata(), annotationMetadata);
+    //把收集到的class填进autoConfigurationEntries里面去
+    this.autoConfigurationEntries.add(autoConfigurationEntry);
+    Iterator var4 = autoConfigurationEntry.getConfigurations().iterator();
+
+    while(var4.hasNext()) {
+	String importClassName = (String)var4.next();
+	this.entries.putIfAbsent(importClassName, annotationMetadata);
+    }
+
+}
+```
+看到这里 我们继续看getAutoConfigurationEntry(this.getAutoConfigurationMetadata(), annotationMetadata);这个方法是怎么来的
+```
+protected AutoConfigurationImportSelector.AutoConfigurationEntry getAutoConfigurationEntry(AutoConfigurationMetadata autoConfigurationMetadata, AnnotationMetadata annotationMetadata) {
+if (!this.isEnabled(annotationMetadata)) {
+    return EMPTY_ENTRY;
+} else {
+    AnnotationAttributes attributes = this.getAttributes(annotationMetadata);
+    //收集到要注册的SpringIOC的class
+    List<String> configurations = this.getCandidateConfigurations(annotationMetadata, attributes);
+    configurations = this.removeDuplicates(configurations);
+    Set<String> exclusions = this.getExclusions(annotationMetadata, attributes);
+    this.checkExcludedClasses(configurations, exclusions);
+    configurations.removeAll(exclusions);
+    configurations = this.filter(configurations, autoConfigurationMetadata);
+    this.fireAutoConfigurationImportEvents(configurations, exclusions);
+    return new AutoConfigurationImportSelector.AutoConfigurationEntry(configurations, exclusions);
+}
+}
+```
+继续看 getCandidateConfigurations(annotationMetadata, attributes); 代码，源码如下
+```
+protected List<String> getCandidateConfigurations(AnnotationMetadata metadata, AnnotationAttributes attributes) {
+List<String> configurations = SpringFactoriesLoader.loadFactoryNames(this.getSpringFactoriesLoaderFactoryClass(), this.getBeanClassLoader());
+Assert.notEmpty(configurations, "No auto configuration classes found in META-INF/spring.factories. If you are using a custom packaging, make sure that file is correct.");
+return configurations;
+}
+```
+继续跟进 SpringFactoriesLoader.loadFactoryNames
+```
+public static List<String> loadFactoryNames(Class<?> factoryType, @Nullable ClassLoader classLoader) {
+String factoryTypeName = factoryType.getName();
+return (List)loadSpringFactories(classLoader).getOrDefault(factoryTypeName, Collections.emptyList());
+}
+```
+继续跟进 loadSpringFactories(classLoader)
+```
+private static Map<String, List<String>> loadSpringFactories(@Nullable ClassLoader classLoader) {
+MultiValueMap<String, String> result = (MultiValueMap)cache.get(classLoader);
+if (result != null) {
+    return result;
+} else {
+    try {
+    //重要发现，它去加载配置文件FACTORIES_RESOURCE_LOCATION
+	Enumeration<URL> urls = classLoader != null ? classLoader.getResources("META-INF/spring.factories") : ClassLoader.getSystemResources("META-INF/spring.factories");
+	LinkedMultiValueMap result = new LinkedMultiValueMap();
+
+	while(urls.hasMoreElements()) {
+	    URL url = (URL)urls.nextElement();
+	    UrlResource resource = new UrlResource(url);
+	    Properties properties = PropertiesLoaderUtils.loadProperties(resource);
+	    Iterator var6 = properties.entrySet().iterator();
+
+	    while(var6.hasNext()) {
+		Entry<?, ?> entry = (Entry)var6.next();
+		String factoryTypeName = ((String)entry.getKey()).trim();
+		String[] var9 = StringUtils.commaDelimitedListToStringArray((String)entry.getValue());
+		int var10 = var9.length;
+
+		for(int var11 = 0; var11 < var10; ++var11) {
+		    String factoryImplementationName = var9[var11];
+		    result.add(factoryTypeName, factoryImplementationName.trim());
+		}
+	    }
+	}
+
+	cache.put(classLoader, result);
+	return result;
+    } catch (IOException var13) {
+	throw new IllegalArgumentException("Unable to load factories from location [META-INF/spring.factories]", var13);
+    }
+}
+}
+```
+以上代码 有重大发现 ， 它去加载了配置文件FACTORIES_RESOURCE_LOCATION，故我们只要知道这个配置文件是干嘛的？
+```
+public final class SpringFactoriesLoader {
+    public static final String FACTORIES_RESOURCE_LOCATION = "META-INF/spring.factories";
+    private static final Log logger = LogFactory.getLog(SpringFactoriesLoader.class);
+    private static final Map<ClassLoader, MultiValueMap<String, String>> cache = new ConcurrentReferenceHashMap();
+```
+spring.factories是springboot 的解耦扩展机制。这种机制实际上是模仿了java的SPI扩展来实现的。
+那什么是JAVA SPI呢？
+关于JAVA的SPI大家可以看下我的博客《深度解剖dubbo源码》。
+
+你可以在META-INF/spring.factories文件里面配置你自己的实现类名称，然后spring会读取springfactories文件的内容，并实例化IOC容器。
+我们一起来看一下 spring.factories 文件有那些东西？
+
+在 spring-boot-autoconfigure-2.2.5.RELEASE.jar 的META-INF/spring.factories
+```
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+org.springframework.boot.autoconfigure.admin.SpringApplicationAdminJmxAutoConfiguration,\
+org.springframework.boot.autoconfigure.aop.AopAutoConfiguration,\
+org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration,\
+org.springframework.boot.autoconfigure.batch.BatchAutoConfiguration,\
+org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration,\
+org.springframework.boot.autoconfigure.cassandra.CassandraAutoConfiguration,\
+org.springframework.boot.autoconfigure.cloud.CloudServiceConnectorsAutoConfiguration,\
+org.springframework.boot.autoconfigure.context.ConfigurationPropertiesAutoConfiguration,\
+org.springframework.boot.autoconfigure.context.MessageSourceAutoConfiguration,\
+org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration,\
+org.springframework.boot.autoconfigure.couchbase.CouchbaseAutoConfiguration,\
+org.springframework.boot.autoconfigure.dao.PersistenceExceptionTranslationAutoConfiguration,\
+org.springframework.boot.autoconfigure.data.cassandra.CassandraDataAutoConfiguration,\
+```
+以上最终的目的就是把spring .factories里卖弄的class加载到spring ioc容器中。
