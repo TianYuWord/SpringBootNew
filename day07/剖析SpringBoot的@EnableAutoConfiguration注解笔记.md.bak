@@ -1,0 +1,160 @@
+#剖析SpringBoot的@EnableAutoConfiguration注解
+
+##一：本节课目标
+1，学习springboot的核心注解@EnableAutoConfiguration，并掌握其中原理 <br/>
+2，学习@Import有什么作用， 编码实现一个@Import的例子 。<br/>
+3，模仿@EnableAutoConfiguration的原理，并自己编码实现一个@Enable*的开关注解<br/>
+
+## 二：解读@EnableAutoConfiguration
+@EnableAutoConfiguration是@SpringBootApplication3大核心中最重要的一个。
+源码如下 :
+```
+@Target({ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Inherited
+@AutoConfigurationPackage
+@Import({AutoConfigurationImportSelector.class})
+public @interface EnableAutoConfiguration {
+    String ENABLED_OVERRIDE_PROPERTY = "spring.boot.enableautoconfiguration";
+
+    Class<?>[] exclude() default {};
+
+    String[] excludeName() default {};
+}
+```
+
+其中最关键的是@Import({AutoConfigurationImportSelector.class})，我们先来讲解@Import
+
+## 三，大厂面试题：讲一下@Import有什么作用？
+@Import作用：将指定的实例注入到Spring IOC容器中。
+
+## 四，编码实现一个@Import例子
+### 步骤1：创建一个Bean
+创建这个bean的目的是把它注入SpringIoc容器中
+```
+@Data
+public class UserBean {
+}
+
+```
+### 步骤2 ：新建service
+采用@import来，将UserBean注入到SpringIOC容器中
+```
+@Component
+@Import({UserBean.class})
+public class UserService {
+}
+```
+### 步骤3：启动类
+```
+@ComponentScan("cn.boot.EnableAutoConfiguration") //这里不必在意，只是应为包结构才这样写的
+public class Main {
+    public static void main(String[] args) {
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(UserService.class);
+        UserService userService = applicationContext.getBean(UserService.class);
+        UserBean userBean = applicationContext.getBean(UserBean.class);
+
+        System.out.println(userService);
+        System.out.println(userBean);
+    }
+}
+```
+结果：
+```
+cn.boot.EnableAutoConfiguration.service.UserService@65d09a04
+UserBean()
+```
+
+## 五， 大厂面试题：讲一下Spring的ImportSelector接口有什么作用？
+从AutoConfigurationSelector源码，进入后，发现了6个核心接口，如下
+```
+public class AutoConfigurationImportSelector implements DeferredImportSelector, BeanClassLoaderAware, ResourceLoaderAware, BeanFactoryAware, EnvironmentAware, Ordered 
+```
+但是最核心的是DeferredImportSelector接口，最核心的！！！
+
+从DeferredImportSelector接口的源码中，看出了他继承了ImportSelector，源码如下
+```
+public interface DeferredImportSelector extends ImportSelector {
+```
+再看ImportSelector的源码
+```
+public interface ImportSelector {
+    String[] selectImports(AnnotationMetadata var1);
+
+    @Nullable
+    default Predicate<String> getExclusionFilter() {
+        return null;
+    }
+}
+```
+从以上源码可以看出：
+ImportSelector接口只定义了一个ImportSelects方法，它的作用收集需要将class注册到spring ioc 容器里面。
+ImportSelector接口接口一般和@Import一起使用，一般用@Import会引入ImportSelector实现类后会把实现类中得返回class数组都注入到spring ioc容器中。
+
+## 六，案例实战：模仿@EnableAutoConfiguration注解，写一个@Enable*得开关注解
+很多开关注解类 ，例如： @EnableAsync ， @EnableSwagger2 ， @EnableAutoConfiguration
+这些开关注解类得原理是什么？
+底层原理是用ImportSelector接口来实现的。
+@Enable代表得意思就是开启一项功能，起到了开关得作用。
+这些开关注解得原理是什么？
+底层使用ImportSelector接口来实现的。
+
+### 步骤1：
+```
+@Data
+public class UserBean {
+}
+@Data
+public class RoleBean {
+}
+```
+
+### 步骤2：自定义一个ImportSelector ，记得实现ImportSelector接口
+通过ImportSelector的selectorImports方法，返回2个class
+"cn.boot.EnableAutoConfiguration.model.RoleBean"
+"cn.boot.EnableAutoConfiguration.model.UserBean"
+目的：将收集到的2个class注册到Spring IOC容器里面
+```
+public class MyImportSelector implements ImportSelector {
+    @Override
+    public String[] selectImports(AnnotationMetadata importingClassMetadata) {
+        return new String[]{"cn.boot.EnableAutoConfiguration.model.RoleBean",
+	"cn.boot.EnableAutoConfiguration.model.UserBean"};
+    }
+}
+```
+### 步骤3：自定义一个开关注解类
+```
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Target(ElementType.TYPE)
+@Import({MyImportSelector.class})
+public @interface EnableUserBean {
+}
+```
+### 步骤4：增加一个配置类，用于设置加入@EnableUserConfig
+```
+@ComponentScan("cn.boot.EnableAutoConfiguration")
+public class Main {
+    public static void main(String[] args) {
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(UserService.class);
+        UserService userService = applicationContext.getBean(UserService.class);
+        UserBean userBean = applicationContext.getBean(UserBean.class);
+        RoleBean roleBean = applicationContext.getBean(RoleBean.class);
+        System.out.println(userService.toString());
+        System.out.println(userBean.toString());
+        System.out.println(roleBean);
+    }
+}
+```
+执行结果
+```
+cn.boot.EnableAutoConfiguration.service.UserService@166fa74d
+UserBean()
+RoleBean()
+```
+
+## 六，课后练习题：
+模仿@EnableAutoConfiguration，@EnableAsync，@EnableSwagger2注解
+自己编码设计一个@Enable的开关注解
