@@ -8,7 +8,9 @@
         <outputRelativeToContentRoot value="true" />
         <module name="ImportSlectorCode" />
         <module name="dagongcheng" />
+        <module name="springfactories" />
         <module name="enableAutoConfigurationSource" />
+        <module name="springfactories-core" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -16,6 +18,8 @@
       <module name="dagongcheng (1)" target="1.8" />
       <module name="enableAutoConfigurationSource" target="1.8" />
       <module name="ImportSlectorCode" target="1.8" />
+      <module name="springfactories" target="1.8" />
+      <module name="springfactories-core" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -24,6 +28,8 @@
       <module name="dagongcheng" options="-parameters" />
       <module name="dagongcheng (1)" options="-parameters" />
       <module name="enableAutoConfigurationSource" options="-parameters" />
+      <module name="springfactories" options="-parameters" />
+      <module name="springfactories-core" options="-parameters" />
     </option>
   </component>
 </project>

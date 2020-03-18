@@ -153,3 +153,68 @@ org.springframework.boot.autoconfigure.dao.PersistenceExceptionTranslationAutoCo
 org.springframework.boot.autoconfigure.data.cassandra.CassandraDataAutoConfiguration,\
 ```
 以上最终的目的就是把spring .factories里卖弄的class加载到spring ioc容器中。
+
+### 三，案例实战：自己动手编码实现的spring.factories文件
+只要在src/main/resource/目录下的META-INF创建spring.factories文件即可
+
+#### 步骤1：新建一个 Bean 和配置类
+```
+public class User {
+    public String info(){
+        return " student";
+    }
+}
+
+@Configuration
+public class MyConfig {
+
+    @Bean
+    public User user(){
+        return new User();
+    }
+
+}
+```
+
+#### 步骤2：新建spring.factories
+在src/main/resource 目录下的META-INF创建spring.factories文件即可
+```
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.boot.springfactories.config.MyConfig
+```
+
+#### 步骤3：体验类
+```
+package cn.boot.springfactoriescore.springfactoriescore;
+
+import com.boot.springfactories.model.User;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+
+@SpringBootApplication
+public class SpringfactoriesCoreApplication {
+
+    public static void main(String[] args) {
+        ConfigurableApplicationContext run = SpringApplication.run(SpringfactoriesCoreApplication.class, args);
+        User user = run.getBean(User.class);
+        System.out.println(user.info());
+    }
+
+}
+```
+结果：
+```
+ student
+```
+
+### 四，总结@SpringBootApplication启动原理
+以上所有注解就只干了一件事：把Bean注册到SpringIoc容器。
+通过4种方式来实现：
+1，@SpringBootConfiguration 通过@Configuration 与@Bean结合，注册带SpringIoc容器。
+2，@ComponentsScan 通过范围的方式，扫描特定注解类，将其注册到Spring Ioc 容器
+3，@import 通过导入的方式将指定的class注入到SpringIOC容器里面
+4，@EnableAutoConfiguration 通过spring.factories的配置，来实现Bean的注册。
+
+### 五，课后练习
+参考本项目，创建两个子工程，一个工程放一个Student另一个工程采用sprig.factories文件来调用
+另一个模块里面的对象。不懂得可以看我的项目，实在不行就联系我的QQ2949852842

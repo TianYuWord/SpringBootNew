@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/ImportSlectorCode/ImportSlectorCode.iml" filepath="$PROJECT_DIR$/ImportSlectorCode/ImportSlectorCode.iml" />
       <module fileurl="file://$PROJECT_DIR$/dagongcheng.iml" filepath="$PROJECT_DIR$/dagongcheng.iml" />
       <module fileurl="file://$PROJECT_DIR$/enableAutoConfigurationSource/enableAutoConfigurationSource.iml" filepath="$PROJECT_DIR$/enableAutoConfigurationSource/enableAutoConfigurationSource.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springfactories/springfactories.iml" filepath="$PROJECT_DIR$/springfactories/springfactories.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springfactories-core/springfactories-core.iml" filepath="$PROJECT_DIR$/springfactories-core/springfactories-core.iml" />
     </modules>
   </component>
 </project>

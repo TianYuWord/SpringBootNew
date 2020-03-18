@@ -2,13 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1b3d56ac-7554-40b7-b2cf-0b83e3f7f19f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_5_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_10_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_10_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_10_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_10_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_10_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_10_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_validation_jakarta_validation_api_2_0_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_9_0_31.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_9_0_31.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_9_0_31.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_0_18_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_4_1_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_2_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_2_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_validation_2_2_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_2_5_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_5_2_4_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_5_2_4_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/springfactories-core/springfactories-core.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/springfactories/springfactories.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dagongcheng.iml" beforeDir="false" afterPath="$PROJECT_DIR$/dagongcheng.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../解密spring的ImportSelector和actories笔记.md" beforeDir="false" afterPath="$PROJECT_DIR$/../解密spring的ImportSelector和actories笔记.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../解密spring的ImportSelector和actories笔记.md.bak" beforeDir="false" afterPath="$PROJECT_DIR$/../解密spring的ImportSelector和actories笔记.md.bak" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +41,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="AnnotationType" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -49,24 +72,25 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/ImportSlectorCode" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/springfactories" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15384616" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="http.proxy" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\zm\branch\SpringBoot\day07\dagongcheng\springfactories-core\src\main\resources" />
       <recent name="E:\zm\branch\SpringBoot\day07\dagongcheng" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.ImportSlectorCodeApplication (2)">
+  <component name="RunManager" selected="Spring Boot.SpringfactoriesCoreApplication">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="cn.boot.EnableAutoConfiguration.main.Main" />
       <module name="enableAutoConfigurationSource" />
@@ -128,6 +152,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SpringfactoriesApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springfactories" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.boot.springfactories.SpringfactoriesApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringfactoriesApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springfactories" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.boot.springfactories.springfactories.SpringfactoriesApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringfactoriesCoreApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springfactories-core" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.boot.springfactoriescore.springfactoriescore.SpringfactoriesCoreApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.ImportSlectorCodeApplication (1)" />
@@ -145,7 +190,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1584542060756</updated>
-      <workItem from="1584542063217" duration="11062000" />
+      <workItem from="1584542063217" duration="14322000" />
     </task>
     <servers />
   </component>
@@ -153,78 +198,78 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="530" y="74" key="#Project_Structure" timestamp="1584552750050">
+    <state x="530" y="74" key="#Project_Structure" timestamp="1584553485892">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="530" y="74" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1584552750050" />
+    <state x="530" y="74" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1584553485892" />
     <state x="958" y="125" key="#com.intellij.ide.util.MemberChooser" timestamp="1584546582215">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="958" y="125" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1584546582215" />
-    <state x="798" y="103" key="FileChooserDialogImpl" timestamp="1584550475032">
+    <state x="798" y="103" key="FileChooserDialogImpl" timestamp="1584555826488">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="798" y="103" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1584550475032" />
-    <state width="723" height="261" key="GridCell.Tab.0.bottom" timestamp="1584551352184">
+    <state x="798" y="103" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1584555826488" />
+    <state width="1493" height="261" key="GridCell.Tab.0.bottom" timestamp="1584556618823">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="723" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584551352184" />
-    <state width="723" height="261" key="GridCell.Tab.0.center" timestamp="1584551352183">
+    <state width="1493" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584556618823" />
+    <state width="1493" height="261" key="GridCell.Tab.0.center" timestamp="1584556618823">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="723" height="261" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1584551352183" />
-    <state width="723" height="261" key="GridCell.Tab.0.left" timestamp="1584551352183">
+    <state width="1493" height="261" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1584556618823" />
+    <state width="1493" height="261" key="GridCell.Tab.0.left" timestamp="1584556618823">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="723" height="261" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1584551352183" />
-    <state width="723" height="261" key="GridCell.Tab.0.right" timestamp="1584551352184">
+    <state width="1493" height="261" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1584556618823" />
+    <state width="1493" height="261" key="GridCell.Tab.0.right" timestamp="1584556618823">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="723" height="261" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1584551352184" />
-    <state width="723" height="261" key="GridCell.Tab.1.bottom" timestamp="1584551354245">
+    <state width="1493" height="261" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1584556618823" />
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1584556621436">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="723" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584551354245" />
-    <state width="723" height="261" key="GridCell.Tab.1.center" timestamp="1584551354245">
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584556621436" />
+    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1584556621436">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="723" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1584551354245" />
-    <state width="723" height="261" key="GridCell.Tab.1.left" timestamp="1584551354245">
+    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1584556621436" />
+    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1584556621436">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="723" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1584551354245" />
-    <state width="723" height="261" key="GridCell.Tab.1.right" timestamp="1584551354245">
+    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1584556621436" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1584556621436">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="723" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1584551354245" />
-    <state width="723" height="261" key="GridCell.Tab.2.bottom" timestamp="1584551352010">
+    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1584556621436" />
+    <state width="1493" height="261" key="GridCell.Tab.2.bottom" timestamp="1584556618634">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="723" height="261" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584551352010" />
-    <state width="723" height="261" key="GridCell.Tab.2.center" timestamp="1584551352010">
+    <state width="1493" height="261" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584556618634" />
+    <state width="1493" height="261" key="GridCell.Tab.2.center" timestamp="1584556618634">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="723" height="261" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1584551352010" />
-    <state width="723" height="261" key="GridCell.Tab.2.left" timestamp="1584551352010">
+    <state width="1493" height="261" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1584556618634" />
+    <state width="1493" height="261" key="GridCell.Tab.2.left" timestamp="1584556618634">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="723" height="261" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1584551352010" />
-    <state width="723" height="261" key="GridCell.Tab.2.right" timestamp="1584551352010">
+    <state width="1493" height="261" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1584556618634" />
+    <state width="1493" height="261" key="GridCell.Tab.2.right" timestamp="1584556618634">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="723" height="261" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1584551352010" />
-    <state x="657" y="110" key="NewModule_or_Project.wizard" timestamp="1584550476953">
+    <state width="1493" height="261" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1584556618634" />
+    <state x="657" y="110" key="NewModule_or_Project.wizard" timestamp="1584555827889">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="657" y="110" key="NewModule_or_Project.wizard/0.0.1536.824@0.0.1536.824" timestamp="1584550476953" />
-    <state x="498" y="0" key="SettingsEditor" timestamp="1584550661795">
+    <state x="657" y="110" key="NewModule_or_Project.wizard/0.0.1536.824@0.0.1536.824" timestamp="1584555827889" />
+    <state x="498" y="0" key="SettingsEditor" timestamp="1584556179519">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="498" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1584550661795" />
-    <state x="178" y="114" key="new project wizard" timestamp="1584548846500">
+    <state x="498" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1584556179519" />
+    <state x="289" y="124" width="1180" height="592" key="new project wizard" timestamp="1584555333080">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="178" y="114" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1584548846500" />
+    <state x="289" y="124" width="1180" height="592" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1584555333080" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -237,7 +282,7 @@
         <line-breakpoint enabled="true" type="java-line">
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.2.5.RELEASE/spring-boot-autoconfigure-2.2.5.RELEASE.jar!/org/springframework/boot/autoconfigure/AutoConfigurationImportSelector.class</url>
           <line>76</line>
-          <option name="timeStamp" value="3" />
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

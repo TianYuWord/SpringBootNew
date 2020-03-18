@@ -24,6 +24,8 @@
     <modules>
         <module>enableAutoConfigurationSource</module>
         <module>ImportSlectorCode</module>
+        <module>springfactories</module>
+        <module>springfactories-core</module>
     </modules>
 
     <build>
