@@ -1,0 +1,33 @@
+# SpringBoot集成mybatis攻略
+
+##  一，课程目标：
+1，为什么要使用 MyBatis ？
+2，为什么需要通用的tk mapper？
+3，感受《MyBatis 代码生成器Generator》自动生成代码的快感
+4，体验不用写SQL的mybatis通用增删改查操作
+
+## 一，什么是 MyBatis？
+MyBatis是一款优秀的持久层框架，支持常规的SQL查询，同时也支持定制SQL，存储过程以及高级影射。
+MyBatis消除了几乎所有的JDBC代码和参数的手工设置以及对结果集的检查封装。
+MyBatis可以使用简单的XML或注解用于配置原始映射，将接口和Java的POJO（普通的JAVA对象）映射成数据
+
+## 二，为什么使用MyBatis？
+在传统的JDBC我们除了需要自己提供SQL外，还需要操作Connection，Statment，ResultSet，不仅如此，为了访问不同的表
+我们需要很多雷同模板的代码，显得繁琐又枯燥。
+而我们在使用了 MyBatis 之后，只需要提供SQL语句就好了，其余的诸如：建立连接，操作 Statement，ResultSet，处理JDBC 相关异常
+MyBatis去处理，我们的关注点于是就此集中在了SQL语句上，关注在增删改查这些操作的界面上。
+并且MyBatis支持使用简单的XML 或注解来配置和映射原生信息。
+将接口和 JAVA 的 POJOs（普通的JAVA对象）映射成数据库中的记录。
+一句话：不用写JDBC代码，只写SQL就行！！！
+
+## 四，为什么锁是tk mapper ？
+在使用mybatis的同时，建议大家在搭配使用“通用tk Mapper4”，它是一个可以实现任意 MyBatis 通用方法的框架，
+项目提供了常规的增删改查操作以及Examole 相关的表单操作。通用 Mapper 是为了解决MyBatis 使用中 90% 的基本操作，
+使用它可以很方便的进行开发，可以节省开发人员大量的时间。
+官方地址：https://github.com/abel533/Mapper/wiki
+
+## 三的，那为什么需要通用的tk mapper ？
+mybatis最大的问题，就是要写大量的SQL在XML中，因为除了必须的特殊复杂的业务逻辑SQL外，还要为大量的类型增删改查SQL。
+另外，当数据库表结构变更时，所有的SLQ和实体类都要改一遍，那个痛苦啊。故，通用tk mapper应运而生。
+
+一句话：不用写JDBC代码，同时不用写SQL！（对于互联网公司来说，97%不是写sql，剩下3%要写多表关联查询sql）
